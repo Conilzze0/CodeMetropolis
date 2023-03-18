@@ -61,7 +61,7 @@
 	<repositories>
 		<repository>
 			<id>local-repository</id>
-			<url>file://${user.dir}/../dependencies</url>
+			<url>file://${project.basedir}/../dependencies</url>
 		</repository>
 	</repositories>
 
