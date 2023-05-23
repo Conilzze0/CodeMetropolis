@@ -121,7 +121,9 @@ def converter_tool(input_path, types, parameters, output_path):
         subprocess.call(['java', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path]),
     else:
         subprocess.call(['java', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path , '-p' , '' + parameters]),
-    path = search_file('./', 'converterToMapping.xml')
+    dir_ds = os.path.abspath(os.path.join(os.getcwd(), '..'))
+    print('itt keresem: ' + dir_ds)
+    path = search_file(dir_ds, 'converterToMapping.xml')
     print('found it: ' + path)
 
     shutil.move(os.path.join('./', 'converterToMapping.xml'), os.path.join(output_path, 'converterToMapping.xml'))
