@@ -45,5 +45,5 @@ jobs:
           pip install pytest
         working-directory: ./sources/test
       - name: Run Python Script
-        run: python 'CodeMetropolis Tester.py' testFiles/converter inputs/converterInput.graph expected/converterExpected.xml output --type SourceMeter --parameters None
+        run: python 'CodeMetropolis Tester.py' testFiles/converter ./inputs/converterInput.graph expected/converterExpected.xml output --type SourceMeter --parameters None
         working-directory: ./sources/test
