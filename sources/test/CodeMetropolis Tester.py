@@ -157,7 +157,7 @@ while True:
         importPytestFile = importlib.import_module(splitter(test_file))
         
     if (str(test_file) == "None"):
-        importPytestFile = importlib.import_module(random_test_file_select(test_file_path))
+        importPytestFile = importlib.import_module(random_test_file_select(test_file_path), test_file_path)
 
     #selected tool from test
     selected_tool = importPytestFile.jar
