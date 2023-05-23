@@ -128,21 +128,21 @@ def converter_tool(input_path, types, parameters, output_path):
            
 #mapping tool 
 def mapping_tool(input_path, mapping_path, output_path):
-    subprocess.call(['java.exe', '-jar', '../distro/mapping-1.4.0.jar', '-i', '' + input_path , "-m", '' + mapping_path])
+    subprocess.call(['java', '-jar', '../distro/mapping-1.4.0.jar', '-i', '' + input_path , "-m", '' + mapping_path])
     shutil.move(os.path.join('./', 'mappingToPlacing.xml'), os.path.join(output_path, 'mappingToPlacing.xml'))
 
     run_pytest(test_file, test_file_path, modified_test_file_path, expected_output_path, output_path)
 
 #placing tool
 def placing_tool(input_path, output_path):
-    subprocess.call(['java.exe', '-jar', '../distro/placing-1.4.0.jar', '-i', '' + input_path])
+    subprocess.call(['java', '-jar', '../distro/placing-1.4.0.jar', '-i', '' + input_path])
     shutil.move(os.path.join('./', 'placingToRendering.xml'), os.path.join(output_path, 'placingToRendering.xml'))
 
     run_pytest(test_file, test_file_path, modified_test_file_path, expected_output_path, output_path)
 
 #rendering tool
 def rendering_tool(input_path, types, output_path):
-    subprocess.call(['java.exe', '-jar', '../distro/rendering-1.4.0.jar', '-i', '' + input_path, '-world', 'world'])
+    subprocess.call(['java', '-jar', '../distro/rendering-1.4.0.jar', '-i', '' + input_path, '-world', 'world'])
     worldExist = os.path.exists(output_path)
     if (worldExist == True):
         shutil.rmtree(output_path)  
