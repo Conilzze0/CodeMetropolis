@@ -118,6 +118,7 @@ def converter_tool(input_path, types, parameters, output_path):
         subprocess.call(['java.exe', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path]),
     else:
         subprocess.call(['java.exe', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path , '-p' , '' + parameters]),
+    print(os.path.join('./', 'converterToMapping.xml'))
     print(os.path.join(output_path, 'converterToMapping.xml'))
     shutil.move(os.path.join('./', 'converterToMapping.xml'), os.path.join(output_path, 'converterToMapping.xml'))   
 
@@ -157,19 +158,9 @@ while True:
         importPytestFile = __import__(splitter(test_file))
         
     if (str(test_file) == "None"):
-        print(os.path.dirname(__file__))
-        print(test_file_path)
-        test_path = os.path.join(os.path.dirname(__file__), test_file_path)
-        print(test_path)
-        selected_file = random_test_file_select(test_file_path)
-        selected_file_with_path = os.path.join(test_path, selected_file + ".py")
-        print(selected_file_with_path)
-        # sys.path.append(selected_file_with_path)
-        print(sys.path)
-        importPytestFile = __import__(selected_file)
+        importPytestFile = __import__(random_test_file_select(test_file_path))
 
     #selected tool from test
-    print(importPytestFile)
     selected_tool = importPytestFile.jar
 
     #warnings
