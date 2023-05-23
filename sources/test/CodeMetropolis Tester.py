@@ -115,9 +115,9 @@ def run_pytest(test_file, test_file_path, modified_test_file_path, expected_outp
 #converter tool
 def converter_tool(input_path, types, parameters, output_path):
     if parameters == "None" or parameters is None:
-        subprocess.call(['java.exe', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path]),
+        subprocess.call(['java', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path]),
     else:
-        subprocess.call(['java.exe', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path , '-p' , '' + parameters]),
+        subprocess.call(['java', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path , '-p' , '' + parameters]),
     print(os.path.join('./', 'converterToMapping.xml'))
     print(os.path.join(output_path, 'converterToMapping.xml'))
     shutil.move(os.path.join('./', 'converterToMapping.xml'), os.path.join(output_path, 'converterToMapping.xml'))   
