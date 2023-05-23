@@ -39,4 +39,4 @@ jobs:
         with:
           python-version: '3.x'
       - name: Run Python Script
-        run: python '.\CodeMetropolis Tester.py' ./testFiles/converter ./inputs/converterInput.graph ./expected/converterExpected.xml ./output --type SourceMeter --parameters None
+        run: python 'sources/test/CodeMetropolis Tester.py' sources/test/testFiles/converter sources/test/inputs/converterInput.graph sources/test/expected/converterExpected.xml sources/test/output --type SourceMeter --parameters None
