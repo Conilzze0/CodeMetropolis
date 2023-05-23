@@ -1,3 +1,4 @@
+import importlib
 from ast import And
 from queue import Empty
 import pytest
@@ -153,10 +154,10 @@ while True:
     #import test file
     if (str(test_file) != "None"):
         sys.path.append(os.path.join(os.path.dirname(__file__), test_file_path))
-        importPytestFile = __import__(splitter(test_file))
+        importPytestFile = importlib.import_module(splitter(test_file))
         
     if (str(test_file) == "None"):
-        importPytestFile = __import__(random_test_file_select(test_file_path))
+        importPytestFile = importlib.import_module(random_test_file_select(test_file_path))
 
     #selected tool from test
     selected_tool = importPytestFile.jar
