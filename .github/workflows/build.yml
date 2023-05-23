@@ -43,7 +43,5 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pytest
-        working-directory: CodeMetropolis
       - name: Run Python Script
         run: python 'sources/test/CodeMetropolis Tester.py' sources/test/testFiles/converter sources/test/inputs/converterInput.graph sources/test/expected/converterExpected.xml sources/test/output --type SourceMeter --parameters None
-        working-directory: CodeMetropolis
