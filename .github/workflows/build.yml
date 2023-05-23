@@ -57,4 +57,5 @@ jobs:
         run: |
           python 'CodeMetropolis Tester.py' testFiles/converter inputs/converterInput.graph expected/converterExpected.xml output/ --type SourceMeter --parameters None
           python 'CodeMetropolis Tester.py' testFiles/mapping output/converterToMapping.xml expected/mappingExpected.xml output/ --mapping_file_path mapping_examples/sourcemeter_mapping_example_2_0.xml
+          python 'CodeMetropolis Tester.py' testFiles/placing output/mappingToPlacing.xml expected/placingExpected.xml output/
         working-directory: ./sources/test
