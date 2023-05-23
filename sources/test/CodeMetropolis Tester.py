@@ -118,8 +118,8 @@ def converter_tool(input_path, types, parameters, output_path):
         subprocess.call(['java', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path]),
     else:
         subprocess.call(['java', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path , '-p' , '' + parameters]),
-    for root, dirs, files in os.walk(os.getcwd()):
-        if 'converterToMapping.xml' in files:
+    for root, dirs, files in os.walk(os.path.abspath(os.path.join(os.getcwd(), os.pardir))):
+        if 'converterToMapping' in files:
             print('found')
             print(os.path.join(root, 'converterToMapping.xml'))
 
