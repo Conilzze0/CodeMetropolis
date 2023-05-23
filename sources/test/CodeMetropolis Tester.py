@@ -111,17 +111,18 @@ def run_pytest(test_file, test_file_path, modified_test_file_path, expected_outp
         pytest.main([modified_test_file_path, '--expected', expected_output_path, '--output', output_path, "-s"])
     
 #jars functions
-
+def search_file(start_dir, target):
+    for root, dirs, files in os.walk(start_dir):
+        if target in files:
+            return os.path.join(root, target)
 #converter tool
 def converter_tool(input_path, types, parameters, output_path):
     if parameters == "None" or parameters is None:
         subprocess.call(['java', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path]),
     else:
         subprocess.call(['java', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path , '-p' , '' + parameters]),
-    for root, dirs, files in os.walk(os.path.abspath(os.path.join(os.getcwd(), os.pardir))):
-        if 'converterToMapping' in files:
-            print('found')
-            print(os.path.join(root, 'converterToMapping.xml'))
+    path = search_file('./', 'converterToMapping.xml')
+    print('found it: ' + path)
 
     shutil.move(os.path.join('./', 'converterToMapping.xml'), os.path.join(output_path, 'converterToMapping.xml'))
 
