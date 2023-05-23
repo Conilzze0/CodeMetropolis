@@ -156,8 +156,11 @@ while True:
         importPytestFile = __import__(splitter(test_file))
         
     if (str(test_file) == "None"):
-        sys.path.append(os.path.join(os.path.dirname(__file__), test_file_path))
-        importPytestFile = __import__(random_test_file_select(test_file_path), test_file_path)
+        test_path = os.path.join(os.path.dirname(__file__), test_file_path)
+        selected_file = random_test_file_select(test_file_path)
+        sys.path.append(os.path.join(test_path, selected_file))
+        print(sys.path)
+        importPytestFile = __import__(selected_file)
 
     #selected tool from test
     print(importPytestFile)
