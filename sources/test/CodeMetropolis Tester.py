@@ -122,9 +122,9 @@ def converter_tool(input_path, types, parameters, output_path):
     print('parameters: ' + parameters)
     print('output_path: ' + os.path.abspath(output_path))
     if parameters == "None" or parameters is None:
-        subprocess.call(['java.exe', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + os.path.abspath(input_path)]),
+        subprocess.call(['java', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + os.path.abspath(input_path)]),
     else:
-        subprocess.call(['java.exe', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + os.path.abspath(input_path) , '-p' , '' + parameters]),
+        subprocess.call(['java', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + os.path.abspath(input_path) , '-p' , '' + parameters]),
     dir_ds = os.path.abspath(os.path.join(os.getcwd(), '..'))
     current_dir = os.path.abspath(os.path.join(dir_ds, '..'))
     print('itt keresem: ' + current_dir)
