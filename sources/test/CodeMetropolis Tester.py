@@ -158,7 +158,7 @@ while True:
     if (str(test_file) == "None"):
         test_path = os.path.join(os.path.dirname(__file__), test_file_path)
         selected_file = random_test_file_select(test_file_path)
-        sys.path.append(os.path.join(test_path, selected_file))
+        sys.path.append(os.path.join(test_path, selected_file + ".py"))
         print(sys.path)
         importPytestFile = __import__(selected_file)
 
