@@ -118,8 +118,12 @@ def converter_tool(input_path, types, parameters, output_path):
         subprocess.call(['java', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path]),
     else:
         subprocess.call(['java', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path , '-p' , '' + parameters]),
-    print(os.getcwd())
-    shutil.move('converterToMapping.xml', os.path.join(output_path, 'converterToMapping.xml'))
+    for root, dirs, files in os.walk(os.getcwd()):
+        if 'converterToMapping.xml' in files:
+            print('found')
+            print(os.path.join(root, 'converterToMapping.xml'))
+
+    shutil.move(os.path.join('./', 'converterToMapping.xml'), os.path.join(output_path, 'converterToMapping.xml'))
 
     run_pytest(test_file, test_file_path, modified_test_file_path, expected_output_path, output_path)
            
