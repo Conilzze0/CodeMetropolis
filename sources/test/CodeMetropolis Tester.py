@@ -81,6 +81,7 @@ def warning(test_file_path, test_file, input_path, expected_output_path, output_
         "Mapping tool requires mapping_file_path argument!": mapping_path is None and "mapping" in selected_tool
     }
 
+    print(input_path)
     for error, condition in error_messages.items():
         if condition:
             print(f"Error: {error}")
@@ -163,7 +164,7 @@ while True:
         selected_file = random_test_file_select(test_file_path)
         selected_file_with_path = os.path.join(test_path, selected_file + ".py")
         print(selected_file_with_path)
-        sys.path.append(selected_file_with_path)
+        # sys.path.append(selected_file_with_path)
         print(sys.path)
         importPytestFile = __import__(selected_file)
 
