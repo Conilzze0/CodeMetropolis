@@ -17,7 +17,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -28,14 +28,10 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Build with Maven
-        run: |
-          cd sources/
-          mvn clean package
-          cd ..
-          mvn -B verify --file sources/pom.xml
+        run: mvn -B verify --file sources/pom.xml
 
   run-python-script:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - uses: actions/checkout@v2
@@ -53,5 +49,9 @@ jobs:
           pip install pytest
         working-directory: ./sources/test
       - name: Run Python Script
-        run: python 'CodeMetropolis Tester.py' testFiles/converter inputs/converterInput.graph expected/converterExpected.xml output/ --type SourceMeter --parameters None
+        run: |
+          cd ..
+          mvn clean package
+          cd test/
+          python 'CodeMetropolis Tester.py' testFiles/converter inputs/converterInput.graph expected/converterExpected.xml output/ --type SourceMeter --parameters None
         working-directory: ./sources/test
