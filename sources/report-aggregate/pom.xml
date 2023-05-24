@@ -25,6 +25,18 @@
     <dependencies>
         <dependency>
             <groupId>codemetropolis</groupId>
+            <artifactId>commons</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>codemetropolis</groupId>
+            <artifactId>gui</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>codemetropolis</groupId>
             <artifactId>mapping</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
@@ -65,6 +77,12 @@
                         <configuration>
                             <overwrite>false</overwrite>
                             <resources>
+                                <resource>
+                                    <directory>../commons/target/classes</directory>
+                                </resource>
+                                <resource>
+                                    <directory>../gui/target/classes</directory>
+                                </resource>
                                 <resource>
                                     <directory>../toolchain/converter/target/classes</directory>
                                 </resource>
