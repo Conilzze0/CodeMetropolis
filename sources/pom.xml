@@ -243,4 +243,40 @@
       </plugin>
     </plugins>
   </reporting>
+	<profiles>
+		<profile>
+			<id>checkstyle-skip</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-checkstyle-plugin</artifactId>
+						<version>3.1.0</version>
+						<configuration>
+							<includeResources>false</includeResources>
+							<includeTestResources>false</includeTestResources>
+							<includeTestSourceDirectory>true</includeTestSourceDirectory>
+							<configLocation>rules/checkstyle_rules.xml</configLocation>
+							<suppressionsLocation>rules/suppressions.xml</suppressionsLocation>
+							<encoding>UTF-8</encoding>
+							<skip>true</skip>
+						</configuration>
+						<executions>
+							<execution>
+								<id>checkstyle-check</id>
+								<phase>none</phase>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>com.puppycrawl.tools</groupId>
+								<artifactId>checkstyle</artifactId>
+								<version>8.20</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
