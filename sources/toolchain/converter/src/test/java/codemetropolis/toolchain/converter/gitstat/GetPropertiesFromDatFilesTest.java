@@ -12,6 +12,7 @@ import static org.junit.Assert.assertNotEquals;
 class GetPropertiesFromDatFilesTest {
     private List<CdfProperty> properties;
 
+
     @Test
     void testGetPropertiesFromDatFiles() {
         CdfProperty elso = new CdfProperty(".\\src\\test\\java\\codemetropolis\\toolchain\\converter\\gitstat\\test_resource\\TestDatParser\\a.dat elso", "34", CdfProperty.Type.INT);
