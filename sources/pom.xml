@@ -50,6 +50,11 @@
 				<version>4.12</version>
 				<!--<scope>test</scope>-->
 			</dependency>
+			<dependency>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.7</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -67,7 +72,7 @@
 	<repositories>
 		<repository>
 			<id>local-repository</id>
-			<url>file://${user.dir}/../dependencies</url>
+			<url>file://${user.dir}/dependencies</url>
 		</repository>
 	</repositories>
     
@@ -153,6 +158,76 @@
                     </execution>
                 </executions>
             </plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.8</version>
+				<executions>
+					<execution>
+						<id>default-prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>default-report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>default-check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<rule>
+									<element>BUNDLE</element>
+									<limits>
+										<limit>
+											<counter>LINE</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>0.00</minimum>
+										</limit>
+									</limits>
+								</rule>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<includeResources>false</includeResources>
+					<includeTestResources>false</includeTestResources>
+					<includeTestSourceDirectory>true</includeTestSourceDirectory>
+					<configLocation>rules/checkstyle_rules.xml</configLocation>
+					<suppressionsLocation>rules/suppressions.xml</suppressionsLocation>
+					<encoding>UTF-8</encoding>
+					<skip>false</skip>
+				</configuration>
+				<executions>
+					<execution>
+						<id>checkstyle</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>com.puppycrawl.tools</groupId>
+						<artifactId>checkstyle</artifactId>
+						<version>8.20</version>
+					</dependency>
+				</dependencies>
+			</plugin>
         </plugins>
     </build>
 	<reporting>
@@ -174,4 +249,40 @@
       </plugin>
     </plugins>
   </reporting>
+	<profiles>
+		<profile>
+			<id>checkstyle-skip</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-checkstyle-plugin</artifactId>
+						<version>3.1.0</version>
+						<configuration>
+							<includeResources>false</includeResources>
+							<includeTestResources>false</includeTestResources>
+							<includeTestSourceDirectory>true</includeTestSourceDirectory>
+							<configLocation>rules/checkstyle_rules.xml</configLocation>
+							<suppressionsLocation>rules/suppressions.xml</suppressionsLocation>
+							<encoding>UTF-8</encoding>
+							<skip>true</skip>
+						</configuration>
+						<executions>
+							<execution>
+								<id>checkstyle-check</id>
+								<phase>none</phase>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>com.puppycrawl.tools</groupId>
+								<artifactId>checkstyle</artifactId>
+								<version>8.20</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

@@ -81,6 +81,7 @@ def warning(test_file_path, test_file, input_path, expected_output_path, output_
         "Mapping tool requires mapping_file_path argument!": mapping_path is None and "mapping" in selected_tool
     }
 
+    print(input_path)
     for error, condition in error_messages.items():
         if condition:
             print(f"Error: {error}")
@@ -114,31 +115,31 @@ def run_pytest(test_file, test_file_path, modified_test_file_path, expected_outp
 #converter tool
 def converter_tool(input_path, types, parameters, output_path):
     if parameters == "None" or parameters is None:
-        subprocess.call(['java.exe', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path]),
+        subprocess.call(['java', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path]),
     else:
-        subprocess.call(['java.exe', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path , '-p' , '' + parameters]),
+        subprocess.call(['java', '-jar', '../distro/converter-1.4.0.jar', '-t', '' + types , '-s' , '' + input_path , '-p' , '' + parameters]),
 
-    shutil.move(os.path.join('./', 'converterToMapping.xml'), os.path.join(output_path, 'converterToMapping.xml'))   
+    shutil.move(os.path.join('./', 'converterToMapping.xml'), os.path.join(output_path, 'converterToMapping.xml'))
 
     run_pytest(test_file, test_file_path, modified_test_file_path, expected_output_path, output_path)
            
 #mapping tool 
 def mapping_tool(input_path, mapping_path, output_path):
-    subprocess.call(['java.exe', '-jar', '../distro/mapping-1.4.0.jar', '-i', '' + input_path , "-m", '' + mapping_path])
+    subprocess.call(['java', '-jar', '../distro/mapping-1.4.0.jar', '-i', '' + input_path , "-m", '' + mapping_path])
     shutil.move(os.path.join('./', 'mappingToPlacing.xml'), os.path.join(output_path, 'mappingToPlacing.xml'))
 
     run_pytest(test_file, test_file_path, modified_test_file_path, expected_output_path, output_path)
 
 #placing tool
 def placing_tool(input_path, output_path):
-    subprocess.call(['java.exe', '-jar', '../distro/placing-1.4.0.jar', '-i', '' + input_path])
+    subprocess.call(['java', '-jar', '../distro/placing-1.4.0.jar', '-i', '' + input_path])
     shutil.move(os.path.join('./', 'placingToRendering.xml'), os.path.join(output_path, 'placingToRendering.xml'))
 
     run_pytest(test_file, test_file_path, modified_test_file_path, expected_output_path, output_path)
 
 #rendering tool
 def rendering_tool(input_path, types, output_path):
-    subprocess.call(['java.exe', '-jar', '../distro/rendering-1.4.0.jar', '-i', '' + input_path, '-world', 'world'])
+    subprocess.call(['java', '-jar', '../distro/rendering-1.4.0.jar', '-i', '' + input_path, '-world', 'world'])
     worldExist = os.path.exists(output_path)
     if (worldExist == True):
         shutil.rmtree(output_path)  
