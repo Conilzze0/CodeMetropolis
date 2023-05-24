@@ -195,15 +195,20 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.1.2</version>
+				<version>3.1.0</version>
+				<configuration>
+					<includeResources>false</includeResources>
+					<includeTestResources>false</includeTestResources>
+					<includeTestSourceDirectory>true</includeTestSourceDirectory>
+					<configLocation>rules/checkstyle_rules.xml</configLocation>
+					<suppressionsLocation>rules/suppressions.xml</suppressionsLocation>
+					<encoding>UTF-8</encoding>
+					<skip>false</skip>
+				</configuration>
 				<executions>
 					<execution>
 						<id>checkstyle</id>
-						<phase>validate</phase>
-						<configuration>
-							<configLocation>checkstyle.xml</configLocation>
-							<skip>true</skip>
-						</configuration>
+						<phase>verify</phase>
 						<goals>
 							<goal>check</goal>
 						</goals>
@@ -213,7 +218,7 @@
 					<dependency>
 						<groupId>com.puppycrawl.tools</groupId>
 						<artifactId>checkstyle</artifactId>
-						<version>8.45</version>
+						<version>8.20</version>
 					</dependency>
 				</dependencies>
 			</plugin>

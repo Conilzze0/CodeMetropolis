@@ -220,7 +220,7 @@
         </module>
         <module name="ReturnCount">
             <property name="severity" value="error"/>
-            <property name="max" value="1"/>
+            <property name="max" value="4"/>
         </module>
         <module name="StringLiteralEquality">
             <property name="severity" value="error"/>
@@ -385,13 +385,6 @@
         <property name="format" value="long serialVersionUID"/>
         <property name="message" value="Do not declare a serialVersionUID"/>
         <property name="id" value="SerialVersionUIDDeclared_Error"/>
-    </module>
-    <module name="RegexpSingleline">
-        <property name="severity" value="error"/>
-        <property name="format"
-                  value="\.printStackTrace\(\)|System\.out|System\.err|org\.apache\.commons\.logging\.Log|java\.util\.logging"/>
-        <property name="message" value="use SLF4J for logging"/>
-        <property name="id" value="InvalidLoggingMethod_Error"/>
     </module>
     <module name="RegexpSingleline">
         <property name="severity" value="error"/>

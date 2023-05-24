@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 class GetPropertiesFromDatFilesTest {
-    List<CdfProperty> properties;
+    private List<CdfProperty> properties;
 
 
     @Test
