@@ -31,12 +31,12 @@ class GetPropertiesFromDatFilesTest {
 		properties = GitStatDatParser.getPropertiesFromDatFiles(".\\src\\test\\java\\codemetropolis\\toolchain\\converter\\gitstat\\test_resource\\TestDatParser");
 
 		assertNotEquals(null, properties);
-		for (CdfProperty propi : properties) {
+			for (CdfProperty propi : properties) {
 
 
-			assertEquals(propi.getName(), guardProperties.get(properties.indexOf(propi)).getName());
-			assertEquals(propi.getValue(), guardProperties.get(properties.indexOf(propi)).getValue());
-		}
+				assertEquals(propi.getName(), guardProperties.get(properties.indexOf(propi)).getName());
+				assertEquals(propi.getValue(), guardProperties.get(properties.indexOf(propi)).getValue());
+			}
 
 	}
 
