@@ -33,6 +33,7 @@ class GetPropertiesFromDatFilesTest {
 		assertNotEquals(null, properties);
 		for (CdfProperty propi : properties) {
 
+
 			assertEquals(propi.getName(), guardProperties.get(properties.indexOf(propi)).getName());
 			assertEquals(propi.getValue(), guardProperties.get(properties.indexOf(propi)).getValue());
 		}
