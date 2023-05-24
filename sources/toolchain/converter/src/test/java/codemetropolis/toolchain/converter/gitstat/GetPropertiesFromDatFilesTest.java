@@ -27,6 +27,7 @@ class GetPropertiesFromDatFilesTest {
         guardProperties.add(harmadik);
         guardProperties.add(negyedik);
 
+
         properties = GitStatDatParser.getPropertiesFromDatFiles(".\\src\\test\\java\\codemetropolis\\toolchain\\converter\\gitstat\\test_resource\\TestDatParser");
 
         assertNotEquals(null, properties);
