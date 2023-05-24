@@ -16,7 +16,7 @@ public class ConverterExecutor extends AbstractExecutor {
 	@Override
 	public boolean execute(ExecutorArgs args) {
 		ConverterExecutorArgs converterArgs = (ConverterExecutorArgs) args;
-		
+		System.out.println("ConverterExecutorArgs converterArgs = (ConverterExecutorArgs) argsConverterExecutorArgs converterArgs = (ConverterExecutorArgs) argsConverterExecutorArgs converterArgs = (ConverterExecutorArgs) argsConverterExecutorArgs converterArgs = (ConverterExecutorArgs) argsConverterExecutorArgs converterArgs = (ConverterExecutorArgs) argsConverterExecutorArgs converterArgs = (ConverterExecutorArgs) args");
 		CdfConverter converter = ConverterLoader.load(converterArgs.getType(), converterArgs.getParams());
 		converter.addConverterEventListener(new ConverterEventListener() {
 			
