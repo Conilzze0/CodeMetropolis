@@ -32,7 +32,7 @@ class GetPropertiesFromDatFilesTest {
 
 		assertNotEquals(null, properties);
 		for (CdfProperty propi : properties) {
-			System.out.println("asgasgasdggggggggggggggggggggggggggggggggggggggggggggggggggggasgasgasdggggggggggggggggggggggggggggggggggggggggggggggggggggasgasgasdggggggggggggggggggggggggggggggggggggggggggggggggggggasgasgasdgggggggggggggggggggggggggggggggggggggggggggggggggggg");
+			System.out.println("asgasgasdgggggggggggggggggggggggggggggggggggggggggggggggggggasgasgasdggggggggggggggggggggggggggggggggggggggggggggggggggggasgasgasdggggggggggggggggggggggggggggggggggggggggggggggggggggasgasgasdgggggggggggggggggggggggggggggggggggggggggggggggggggg");
 			assertEquals(propi.getName(), guardProperties.get(properties.indexOf(propi)).getName());
 			assertEquals(propi.getValue(), guardProperties.get(properties.indexOf(propi)).getValue());
 		}
