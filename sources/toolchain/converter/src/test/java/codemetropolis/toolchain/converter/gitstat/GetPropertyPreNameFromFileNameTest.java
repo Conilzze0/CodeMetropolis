@@ -7,7 +7,6 @@ class GetPropertyPreNameFromFileNameTest {
 
 	@Test
 	void testGetPropertyPreNameFromFileName1() {
-
 		String result1 = GitStatDatParser.getPropertyPreNameFromFileName("commits_by_year");
 		assertEquals("commits_by_year_", result1);
 	}
