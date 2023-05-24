@@ -59,10 +59,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<sonar.organization>codemetropolis2023</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-		<sonar.jacoco.reportPath>${project.basedir}/../report-aggregate/target/aggregated.exec</sonar.jacoco.reportPath>
-		<sonar.language>java</sonar.language>
+		<sonar.coverage.jacoco.xmlReportPaths>
+			${project.basedir}/report-aggregate/target/site/jacoco-aggregate/jacoco.xml
+		</sonar.coverage.jacoco.xmlReportPaths>
 	</properties>
 
 	<repositories>
