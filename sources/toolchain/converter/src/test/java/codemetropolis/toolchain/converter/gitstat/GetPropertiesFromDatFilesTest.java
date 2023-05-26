@@ -19,6 +19,7 @@ class GetPropertiesFromDatFilesTest {
         CdfProperty harmadik = new CdfProperty(".\\src\\test\\java\\codemetropolis\\toolchain\\converter\\gitstat\\test_resource\\TestDatParser\\b.dat harmadik", "65", CdfProperty.Type.INT);
         CdfProperty negyedik = new CdfProperty(".\\src\\test\\java\\codemetropolis\\toolchain\\converter\\gitstat\\test_resource\\TestDatParser\\b.dat negyedik", "18", CdfProperty.Type.INT);
 
+
         List<CdfProperty> guardProperties = new ArrayList<CdfProperty>();
 
         guardProperties.add(elso);
