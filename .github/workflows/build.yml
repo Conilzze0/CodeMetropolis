@@ -29,6 +29,15 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn -B verify -Pcheckstyle-skip --file sources/pom.xml
+      - name: Find modified Java files
+        id: find_changes
+        run: |
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} > changed_files.txt
+          echo "::set-output name=changed_files::$(cat changed_files.txt)"
+      - name: Run Checkstyle on modified Java files
+        if: steps.find_changes.outputs.changed_files != ''
+        run: |
+          cat changed_files.txt | grep -E '\.java$' | xargs -I {} mvn checkstyle:check -pl {} -f pom.xml
 
   sonarqube:
     runs-on: ubuntu-latest

@@ -3,24 +3,23 @@
 current_dir=$(pwd)
 echo $current_dir
 cd sources/
-# Lekérjük a módosított fájlok listáját
+# Get the list of modified .java files
 modified_files=$(git diff --cached --name-only --diff-filter=ACM -- '*.java')
 
-# Ellenőrizzük, hogy van-e módosított Java fájl
 if [[ -n $modified_files ]]; then
-    # Futtatjuk a Maven Checkstyle plugint a módosított Java fájlokon
-    echo "Ezen futtatjuk:"
+    # Execute the Maven Checkstyle plugin on the modified .java files
+    echo "Checking files:"
     echo $modified_files
 
-    # Fájlok feldolgozása sorban
+    # Iterate through the files
     while IFS= read -r file; do
-        echo "Ellenőrzés: "$(basename "$file")""
+        echo "Checking: "$(basename "$file")""
         mvn checkstyle:check -Dcheckstyle.includes="**/$(basename "$file")"
 
-        # Ellenőrizzük a Checkstyle kimenetét
+        # Checking the output
         checkstyle_exit_code=$?
         if [[ $checkstyle_exit_code -ne 0 ]]; then
-            echo "A Checkstyle ellenőrzés során stílusproblémák találhatók a módosított fájlokban. Kérlek, javítsd ezeket!"
+            echo "Checkstyle violations detected, please fix them!"
             exit 1
         fi
     done <<< "$modified_files"
