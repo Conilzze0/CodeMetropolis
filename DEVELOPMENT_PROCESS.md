@@ -3,6 +3,7 @@
 This documentation is designed to help new developers and team members to understand how
 the project is developed and maintained.
 
+
 ## Table of Contents
 1. [Getting Started](#getting-started)
    1. [Prerequisites](#prerequisites)
