@@ -8,11 +8,12 @@ the project is developed and maintained.
    1. [Prerequisites](#prerequisites)
    2. [Install the Codebase](#install-the-codebase)
 2. [Development Process](#development-process)
-   1. [Merge to Feature Process](#merge-to-feature-process)
-   2. [Merge to Develop Process](#merge-to-develop-process)
+   1. [Merge to Develop Process](#general-development-process)
+   2. [Development Process Diagram](#development-process-diagram)
    3. [Pull Request](#pull-request)
    4. [Branch Types](#branch-types)
    5. [Branching Strategy](#branching-strategy)
+   6. [Commits](#commits)
 3. [Quality Gates](#quality-gates)
    1. [Testing](#testing)
    2. [CheckStyle](#checkstyle)
@@ -41,7 +42,33 @@ the project is developed and maintained.
    * ```mvn clean install -DskipTests```
 
 ## Development Process
-### Merge to Develop Process
+### General Development Process
+1. Create the code change that is required for the new feature (feature implementation, JUnit and Python tests,
+    documentation (JavaDoc), etc.) considering the [Conventional Commits](#commits) specification
+2. Push these commits to the remote [feature branch](#branch-types)
+3. Open a [Pull Request](#pull-request)
+4. Set the [base branch to the develop branch, the compare branch to the feature branch](#branching-strategy)
+5. Fill in the description according to the predefined pull request template
+6. Assign at least `1` reviewer(s) to the pull request to review it
+7. The reviewer(s) review(s) the code, the description
+8. If a reviewer identifies issues with the pull request, then these issues should be raised by commenting on the pull request
+9. The owner of the pull request addresses these issues and makes the necessary changes
+10. The reviewer(s) review(s) these changes and resolves the conversations
+11. If there are no more open conversations, then the developer executes the [manual tests](#testing)
+12. The developer attaches evidences of the executed manual tests
+13. The developer creates/updates the feature documentation on the [CodeMetropolis homepage](https://codemetropolis.github.io/CodeMetropolis/)
+14. Meanwhile, the [CI/CD pipeline](#cicd) has been started automatically
+15. The following conditions should be met before approving the pull request:
+    * The reviewer(s) reviewed the code, all conversations have been resolved
+    * The description is filled in properly
+    * Feature documentations are created/updated
+    * Manual tests are passed
+    * All the checks are passed on the pull request
+16. The reviewer(s) approve(s) the pull request
+17. The developer clicks on the Squash and Merge button
+18. (Optional) The developer deletes the feature branch
+
+### Development Process Diagram
 ![merge_to_develop](docs/merge_to_develop.svg)
 
 ### Pull Request
@@ -55,6 +82,8 @@ and the target branch you want to merge into
    * List of dependencies if there are any
    * The possible effects on another function which is caused by this code change
    * List of reviewers
+   * Link of the updated feature documentation
+   * Evidence of manual tests run
 4. Set up at least `1` reviewer who can review the code change
 5. Submit the pull request
 6. The reviewer has to review the code, can add comments, make suggestions
@@ -62,6 +91,8 @@ and the target branch you want to merge into
    * All comments are addressed and resolved
    * The reviewers approved the pull request
    * All checks have passed
+   * Feature documentation is created/updated on the [CodeMetropolis homepage](https://codemetropolis.github.io/CodeMetropolis/)
+   * Evidence that all manual tests have been successfully executed is attached
 8. Use squash and merge
 
 ### Branch Types
@@ -70,15 +101,30 @@ and the target branch you want to merge into
 * `develop`  
     Development branch, continuous development is happening on this branch. Developers
     can merge their feature branches into this branch.
-* `feature`  
-    These branches contain new function and test implementations for each task.
-* `implementation`  
-    The code and unit test implementation of the new function.
-* `test`  
-    Contains functional tests that make sure that the new functionality works as expected.
+* `feature/<feature_name>`  
+    These branches contain new function, test implementation and documentation commits.
 
 ### Branching Strategy
 ![branching strategy](docs/branching_strategy.svg)
+
+### Commits
+In our project, we follow the **Conventional Commits** specification when writing commit messages. 
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) provide a structured and standardized way of documenting changes,
+making it easier to understand and manage the commit history.
+Each commit message should look like the following format: 
+`<type>: <description>`
+* `<type>`: Indicates the purpose of the commit. The following types should be used:
+  * "feat" for feature implementation, these commits contain the necessary code changes for the new feature
+  * "test" for test implementation, changes regarding JUnit and/or Python tests
+  * "docs" for documentation update, this should include JavaDoc at least for the public methods, and feature documentation
+  * Other types can be used if needed: "build", "fix", "ci", etc. Please see the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+  documentation for more info.
+* `<description>`: A clear, brief description of the change.
+
+Examples:  
+* `feat: implement a new renderer method to make the rendering tool faster`
+* `test: implement new tests for the rendering tool`
+* `docs: add javadoc to the added public methods`
 
 ## Quality Gates
 ### Testing
@@ -90,6 +136,10 @@ to validate end-to-end scenarios and ensure that the application works as expect
 * The **functional Python testing** framework can be found in the `sources/test` directory.  
 To use this framework, execute the `CodeMetropolis Tester Interface.py` script, which
 opens a graphical user interface where the developer can run the functional tests.
+* There are **manual tests** defined for the project that cover the functionalities of each tool.
+  * These tests can be found here: [CodeMetropolis GitHub page -> wiki -> Testing](https://github.com/codemetropolis/CodeMetropolis/wiki/Testing)
+  * All manual tests should be executed before merging our features to the `develop` branch
+    and the evidence should be attached to the pull request description.
 
 ### CheckStyle
 The project contains CheckStyle integration to make sure that high quality code
@@ -109,6 +159,32 @@ CodeMetropolis also has a SonarQube integrated to improve the quality of the cod
 SonarQube report generation is triggered when a pull request is created.
 * SonarCloud has been configured to visualize these details, which can be accessed here:
 https://sonarcloud.io/summary/overall?id=Conilzze0_CodeMetropolis
+* The following quality gates has been set for this project:
+  * Early-Development **(default, currently active)**, conditions on new code  
+    ![sonar_early_development_profile_new](docs/sonar_early_development_profile_new.PNG)
+    * These conditions are checked only on new code.
+    * We should aim at **80%** of general code coverage to ensure the correctness of the code.
+    * There shouldn't be more than **3%** duplicated lines in our code to avoid too much duplication.
+    * **80%** of our new lines should be covered with tests.
+    * To keep our code easy to maintain, we should aim at an **A** rating for Maintainability
+      * This metric takes into account factors such as code complexity, redundancy, coding style,
+      the presence of comments, and other elements.
+    * We will need an **A** rating for Reliability.
+      * This metric focuses on issues, exceptions, and security problems that may occur during 
+      code execution.
+    * We want to make sure that our code is resistant to security threats and attacks, so an **A**
+      Security Rating has been set to this profile.
+      * This metric identifies security vulnerabilities that could be exploited within the code.
+  * Early-Development **(default, currently active)**, conditions on overall code
+    ![sonar_early_development_profile_overall](docs/sonar_early_development_profile_overall.PNG)
+    * Currently, it's pointless to measure general and line coverage for the overall code, since the current
+      overall test coverage is minimal.
+    * The remaining conditions are set to the same values as for the new code.
+  * Late-Development
+    * This quality gate should be activated once the development is at a stage where the overall code has been refactored
+    and has been covered with enough tests so the metrics will at least come close to our target conditions.
+    * The new code and the overall code conditions setup is pretty much the same as in the Early-Development profile,
+    with the difference that Coverage and Line Coverage both set to at least **80%** for the overall code.
 
 ### JaCoCo
 JaCoCo is also available to help developers determine how much the code is covered with automated tests.  
