@@ -41,9 +41,6 @@ the project is developed and maintained.
    * ```mvn clean install -DskipTests```
 
 ## Development Process
-### Merge to Feature Process
-![general_development_process](docs/merge_to_feature.svg)
-
 ### Merge to Develop Process
 ![merge_to_develop](docs/merge_to_develop.svg)
 
