@@ -43,30 +43,33 @@ the project is developed and maintained.
 
 ## Development Process
 ### General Development Process
-1. Create the code change that is required for the new feature (feature implementation, JUnit and Python tests,
-    documentation (JavaDoc), etc.) considering the [Conventional Commits](#commits) specification
-2. Push these commits to the remote [feature branch](#branch-types)
-3. Open a [Pull Request](#pull-request)
-4. Set the [base branch to the develop branch, the compare branch to the feature branch](#branching-strategy)
-5. Fill in the description according to the predefined pull request template
-6. Assign at least `1` reviewer(s) to the pull request to review it
-7. The reviewer(s) review(s) the code, the description
-8. If a reviewer identifies issues with the pull request, then these issues should be raised by commenting on the pull request
-9. The owner of the pull request addresses these issues and makes the necessary changes
-10. The reviewer(s) review(s) these changes and resolves the conversations
-11. If there are no more open conversations, then the developer executes the [manual tests](#testing)
-12. The developer attaches evidences of the executed manual tests
-13. The developer creates/updates the feature documentation on the [CodeMetropolis homepage](https://codemetropolis.github.io/CodeMetropolis/)
-14. Meanwhile, the [CI/CD pipeline](#cicd) has been started automatically
-15. The following conditions should be met before approving the pull request:
-    * The reviewer(s) reviewed the code, all conversations have been resolved
-    * The description is filled in properly
-    * Feature documentations are created/updated
-    * Manual tests are passed
-    * All the checks are passed on the pull request
-16. The reviewer(s) approve(s) the pull request
-17. The developer clicks on the Squash and Merge button
-18. (Optional) The developer deletes the feature branch
+1. Create a [feature branch](#branch-types) on remote. This branch will contain all the feature related commits.
+2. Open a "DRAFT" [Pull Request](#pull-request) on the created feature branch.
+3. Fill in the description with as much information as possible.
+4. Create the code change that is required for the new feature (feature implementation, JUnit and Python tests,
+    documentation (JavaDoc), etc.) considering the [Conventional Commits](#commits) specification.
+5. Push these commits to the remote feature branch.
+6. Mark the Pull Request as "ready to review".
+7. Set the [base branch to the develop branch, the compare branch to the feature branch](#branching-strategy).
+8. Fill in the description according to the predefined pull request template.
+9. Assign at least `1` reviewer(s) to the pull request to review it.
+10. The reviewer(s) review(s) the code, the description.
+11. If a reviewer identifies issues with the pull request, then these issues should be raised by commenting on the pull request.
+12. The owner of the pull request addresses these issues and makes the necessary changes.
+13. The reviewer(s) review(s) these changes and resolves the conversations.
+14. If there are no more open conversations, then the developer executes the [manual tests](#testing).
+15. The developer attaches evidences of the executed manual tests.
+16. The developer creates/updates the feature documentation on the [CodeMetropolis homepage](https://codemetropolis.github.io/CodeMetropolis/).
+17. Meanwhile, the [CI/CD pipeline](#cicd) has been started automatically.
+18. The following conditions should be met before approving the pull request:
+    * The reviewer(s) reviewed the code, all conversations have been resolved.
+    * The description is filled in properly.
+    * Feature documentations are created/updated.
+    * Manual tests are passed.
+    * All the checks are passed on the pull request.
+19. The reviewer(s) approve(s) the pull request.
+20. The developer clicks on the Squash and Merge button.
+21. (Optional) The developer deletes the feature branch.
 
 ### Development Process Diagram
 ![merge_to_develop](docs/merge_to_develop.svg)
@@ -74,26 +77,26 @@ the project is developed and maintained.
 ### Pull Request
 The developer must create a pull request in order to merge back the new code
 into the target branch.
-1. Create a pull request on the [CodeMetropolis GitHub page](https://github.com/Conilzze0/CodeMetropolis)
+1. Create a pull request on the [CodeMetropolis GitHub page](https://github.com/Conilzze0/CodeMetropolis).
 2. Set the branches accordingly, select the branch where you want to merge from,
-and the target branch you want to merge into
+and the target branch you want to merge into.
 3. Fill in the description with the following:
-   * Detailed information about the problem or the added new function
-   * List of dependencies if there are any
-   * The possible effects on another function which is caused by this code change
-   * List of reviewers
-   * Link of the updated feature documentation
-   * Evidence of manual tests run
-4. Set up at least `1` reviewer who can review the code change
-5. Submit the pull request
-6. The reviewer has to review the code, can add comments, make suggestions
+   * Detailed information about the problem or the added new function.
+   * List of dependencies if there are any.
+   * The possible effects on another function which is caused by this code change.
+   * List of reviewers.
+   * Link of the updated feature documentation.
+   * Evidence of manual tests run.
+4. Set up at least `1` reviewer who can review the code change.
+5. Submit the pull request.
+6. The reviewer has to review the code, can add comments, make suggestions.
 7. The pull request can be merged if:
-   * All comments are addressed and resolved
-   * The reviewers approved the pull request
-   * All checks have passed
-   * Feature documentation is created/updated on the [CodeMetropolis homepage](https://codemetropolis.github.io/CodeMetropolis/)
-   * Evidence that all manual tests have been successfully executed is attached
-8. Use squash and merge
+   * All comments are addressed and resolved.
+   * The reviewers approved the pull request.
+   * All checks have passed.
+   * Feature documentation is created/updated on the [CodeMetropolis homepage](https://codemetropolis.github.io/CodeMetropolis/).
+   * Evidence that all manual tests have been successfully executed is attached.
+8. Use squash and merge.
 
 ### Branch Types
 * `master`  
@@ -114,9 +117,9 @@ making it easier to understand and manage the commit history.
 Each commit message should look like the following format: 
 `<type>: <description>`
 * `<type>`: Indicates the purpose of the commit. The following types should be used:
-  * "feat" for feature implementation, these commits contain the necessary code changes for the new feature
-  * "test" for test implementation, changes regarding JUnit and/or Python tests
-  * "docs" for documentation update, this should include JavaDoc at least for the public methods, and feature documentation
+  * "feat" for feature implementation, these commits contain the necessary code changes for the new feature.
+  * "test" for test implementation, changes regarding JUnit and/or Python tests.
+  * "docs" for documentation update, this should include JavaDoc at least for the public methods, and feature documentation.
   * Other types can be used if needed: "build", "fix", "ci", etc. Please see the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
   documentation for more info.
 * `<description>`: A clear, brief description of the change.
@@ -190,9 +193,9 @@ https://sonarcloud.io/summary/overall?id=Conilzze0_CodeMetropolis
 JaCoCo is also available to help developers determine how much the code is covered with automated tests.  
 * To use this tool, run the following command:
   `mvn clean verify`
-* After the execution, a report is generated under the `sources/report-aggregate/target/site/jacoco-aggregate` directory
-* To view the report, start a web server and open the `index.html`
-  * In IntelliJ, you can right-click on the `index.html` file -> Open In -> Browser and select your favourite browser
+* After the execution, a report is generated under the `sources/report-aggregate/target/site/jacoco-aggregate` directory.
+* To view the report, start a web server and open the `index.html`.
+  * In IntelliJ, you can right-click on the `index.html` file -> Open In -> Browser and select your favourite browser.
 
 ## CI/CD
 This project is equipped with Continuous Integration and Continuous Deployment pipeline to ensure
