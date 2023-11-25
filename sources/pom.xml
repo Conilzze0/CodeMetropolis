@@ -201,14 +201,14 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>3.3.1</version>
 				<configuration>
 					<includeResources>false</includeResources>
 					<includeTestResources>false</includeTestResources>
 					<includeTestSourceDirectory>true</includeTestSourceDirectory>
 					<configLocation>rules/checkstyle_rules.xml</configLocation>
 					<suppressionsLocation>rules/suppressions.xml</suppressionsLocation>
-					<encoding>UTF-8</encoding>
+					<violationSeverity>warning</violationSeverity>
 					<skip>false</skip>
 				</configuration>
 				<executions>
@@ -224,7 +224,7 @@
 					<dependency>
 						<groupId>com.puppycrawl.tools</groupId>
 						<artifactId>checkstyle</artifactId>
-						<version>8.20</version>
+						<version>10.12.5</version>
 					</dependency>
 				</dependencies>
 			</plugin>
@@ -257,14 +257,14 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-checkstyle-plugin</artifactId>
-						<version>3.1.0</version>
+						<version>3.3.1</version>
 						<configuration>
 							<includeResources>false</includeResources>
 							<includeTestResources>false</includeTestResources>
 							<includeTestSourceDirectory>true</includeTestSourceDirectory>
 							<configLocation>rules/checkstyle_rules.xml</configLocation>
 							<suppressionsLocation>rules/suppressions.xml</suppressionsLocation>
-							<encoding>UTF-8</encoding>
+							<violationSeverity>warning</violationSeverity>
 							<skip>true</skip>
 						</configuration>
 						<executions>
@@ -277,7 +277,7 @@
 							<dependency>
 								<groupId>com.puppycrawl.tools</groupId>
 								<artifactId>checkstyle</artifactId>
-								<version>8.20</version>
+								<version>10.12.5</version>
 							</dependency>
 						</dependencies>
 					</plugin>
