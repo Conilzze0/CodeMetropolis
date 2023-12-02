@@ -31,7 +31,7 @@ http://codemetropolis.github.io/CodeMetropolis/
     2. Copy the generated world into the location of your saved worlds. On Windwos it is usually located under `C:\Users\<windows username>\AppData\Roaming\.minecraft\saves`. You have to copy the whole folder not just its content.
     3. Start the game and select the world from the list.
 
-## Complie from source
+## Compile from source
 
 1. clone repository
 1. checkout `develop` branch
