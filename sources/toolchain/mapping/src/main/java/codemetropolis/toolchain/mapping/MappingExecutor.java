@@ -19,6 +19,7 @@ public class MappingExecutor extends AbstractExecutor {
 
 	public static final double MIN_SCALE = 0.01;
 	public static final double MAX_SCALE = 100;
+	public final int TestVariable = 5;
 	
 	@Override
 	public boolean execute(ExecutorArgs args) {
