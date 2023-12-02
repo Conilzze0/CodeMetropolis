@@ -62,7 +62,6 @@
     </dependencies>
     <build>
         <plugins>
-            <!-- required by jacoco for the goal: check to work -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -101,7 +100,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -114,7 +112,6 @@
                             <goal>report-aggregate</goal>
                         </goals>
                     </execution>
-
                     <execution>
                         <id>merge-results-data</id>
                         <phase>verify</phase>
@@ -133,7 +130,6 @@
                             <destFile>${code.coverage.overall.data.dir}/aggregate.exec</destFile>
                         </configuration>
                     </execution>
-
                     <execution>
                         <id>perform-code-coverage-threshold-check</id>
                         <phase>verify</phase>
