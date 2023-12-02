@@ -68,7 +68,7 @@ the project is developed and maintained.
     * Manual tests are passed.
     * All the checks are passed on the pull request.
 19. The reviewer(s) approve(s) the pull request.
-20. The developer clicks on the Squash and Merge button.
+20. The developer clicks on the **Rebase and Merge** button.
 21. (Optional) The developer deletes the feature branch.
 
 ### Development Process Diagram
@@ -96,7 +96,7 @@ and the target branch you want to merge into.
    * All checks have passed.
    * Feature documentation is created/updated on the [CodeMetropolis homepage](https://codemetropolis.github.io/CodeMetropolis/).
    * Evidence that all manual tests have been successfully executed is attached.
-8. Use squash and merge.
+8. Use **Rebase and merge**.
 
 ### Branch Types
 * `master`  
